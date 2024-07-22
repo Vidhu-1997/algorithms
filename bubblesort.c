@@ -15,7 +15,7 @@ void bubble_sort(int *array, int len)
 
 int main(void) 
 {
-    int yarr[] = {3, 9, 4, 8, 7, 6, 1, 2, 0, 10};
+    int yarr[] = {3, 9, 4, 8, 7, 6, 2, 1, 0, 10};
     
     bubble_sort(yarr, 10);
 
