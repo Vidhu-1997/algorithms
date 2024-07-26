@@ -1,0 +1,16 @@
+pipeline{
+    agent any   // don't have any ec2 instance so run it in any
+    stages{
+        stage('first-test-stage'){
+            steps{
+                bat 'whoami'
+            }
+        }
+        stage('build'){
+            steps{
+                bat 'echo updated'
+                bat 'calc'
+            }
+        }
+    }
+}
