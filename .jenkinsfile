@@ -1,99 +1,26 @@
-plugins {
-    id 'base'
-    id 'c-application'
-id 'com.gradle.build-scan' version '3.6.4'
-}
- 
-buildScan {
-termsOfServiceUrl = 'https://gradle.com/terms-of-service'
-    termsOfServiceAgree = 'yes'
-}
- 
-// Configure the C application
-application {
-    targetMachines = [machines.linux.x86_64] // adjust for your target platform
-    binaries.configureEach {
-        compileTask.get().source.from(fileTree("src/main/c"))
-        linker.args = ["-lm"]
-    }
-}
- 
-// Define pipeline stages
-task cloneRepo(type: Exec) {
-commandLine 'git', 'clone', 'https://github.com/Vidhu-1997/algorithms.git'
-    doLast {
-        println 'Repository cloned successfully.'
-    }
-}
- 
-task buildC(type: Exec) {
-    commandLine 'gradle', 'build'
-    doLast {
-        println 'C project built successfully.'
-    }
-}
- 
-task runTests(type: Exec) {
-    commandLine 'gradle', 'test'
-    doLast {
-        println 'Tests executed successfully.'
-    }
-}
- 
-task copyDoc(type: Copy) {
-    from 'src/main/resources/components.docx'
-    into 'build/resources'
-    doLast {
-        println 'Document copied successfully.'
-    }
-}
- 
-// Define the pipeline sequence with stages
-task pipeline {
-    dependsOn cloneRepo
-    finalizedBy buildC, runTests, copyDoc
-    doLast {
-        println 'Pipeline completed successfully.'
-    }
-}
- 
-// Create stage tasks for better organization
-task stageClone {
-    dependsOn cloneRepo
-    doLast {
-        println 'Clone stage completed.'
-    }
-}
- 
-task stageBuild {
-    dependsOn buildC
-    doLast {
-        println 'Build stage completed.'
-    }
-}
- 
-task stageTest {
-    dependsOn runTests
-    doLast {
-        println 'Test stage completed.'
-    }
-}
- 
-task stageCopy {
-    dependsOn copyDoc
-    doLast {
-        println 'Copy stage completed.'
-    }
-}
- 
-// Organize stages in a pipeline
 pipeline {
-    dependsOn stageClone
-    stageClone.finalizedBy stageBuild
-    stageBuild.finalizedBy stageTest
-    stageTest.finalizedBy stageCopy
-    doLast {
-        println 'All stages executed successfully.'
+    agent any
+    stages {
+        stage('Stage 1: Compile C Code') {
+            steps {
+                sh 'gcc -o myprogram myprogram.c'
+            }
+        }
+        stage('Stage 2: Run C Code') {
+            steps {
+                sh './*'
+            }
+        }
+        stage('Stage 3: Document Update') {
+            steps {
+                bat 'echo "Updated on $(date)" >> components.docx'
+            }
+        }
+        stage('Stage Final: Build Success') {
+            steps {
+                echo "Build Success!"
+            }
+        }
     }
 }
 
