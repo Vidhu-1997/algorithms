@@ -4,7 +4,7 @@ pipeline{
         stage('first-test-stage'){
             steps{
                 bat 'whoami'
-                echo '%cd%'
+                bat 'where git.exe'
             }
         }
         stage('build'){
