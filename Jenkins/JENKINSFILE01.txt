@@ -4,6 +4,7 @@ pipeline{
         stage('first-test-stage'){
             steps{
                 bat 'whoami'
+                bat 'echo %cd%'
             }
         }
         stage('build'){
