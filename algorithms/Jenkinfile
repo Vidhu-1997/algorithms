@@ -1,6 +1,6 @@
 pipeline { 
      tools {
-        cmake 'hudson.plugins.cmake.CmakeTool'
+        cmake 'cmake25'
     }
     agent any 
     stages { 
