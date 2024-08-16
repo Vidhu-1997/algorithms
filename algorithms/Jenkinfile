@@ -1,11 +1,13 @@
 pipeline { 
-     tools {
-        cmake 'cmake25'
-    }
+tools{
+cmake 'cmake25'
+}
     agent any 
     stages { 
         stage('Build') { 
             steps {
+                bat 'cmake --version'
+                bat 'echo gcc --version'
                    bat 'echo gcc --version' 
             }
         }   
