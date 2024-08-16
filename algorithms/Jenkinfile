@@ -1,0 +1,14 @@
+pipeline { 
+     tools {
+        cmake "cmake"
+    }
+    agent any 
+    stages { 
+        stage('Build') { 
+            steps {
+                   bat 'echo gcc --version' 
+            }
+        }   
+    }
+}
+  
