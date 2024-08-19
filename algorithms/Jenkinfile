@@ -4,10 +4,11 @@ pipeline {
     stages { 
         stage('Build') { 
             steps {
+               script{
                def path1 = tool name: 'cmake25', type: 'hudson.plugins.cmake.CmakeTool'
                echo '${path1}'
                bat 'gcc --version'
-               bat 'cmake --version'
+               }
             }
         }   
     }
