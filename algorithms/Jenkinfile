@@ -6,7 +6,7 @@ pipeline {
             steps {
                script{
                def path1 = tool name: 'cmake25', type: 'hudson.plugins.cmake.CmakeTool'
-               echo '${path1}'
+               echo "${path1}"
                bat 'gcc --version'
                }
             }
