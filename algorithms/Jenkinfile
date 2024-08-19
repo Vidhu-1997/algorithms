@@ -5,7 +5,8 @@ pipeline {
         stage('Build') { 
             steps {
                 tool name: 'cmake25', type: 'hudson.plugins.cmake.CmakeTool'
-               bat 'echo gcc --version'
+               bat 'gcc --version'
+               bat 'cmake --version'
             }
         }   
     }
