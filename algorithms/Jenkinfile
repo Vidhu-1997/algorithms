@@ -8,7 +8,9 @@ pipeline {
                def path1 = tool name: 'cmake25', type: 'hudson.plugins.cmake.CmakeTool'
               bat "cd /d ${path1} && cmake --version"
                bat 'gcc --version'
-        bat " pushd algorithsm && cd /d ${path1} && cmake --build %CD% && pop"
+        bat ''' cd algorithsm  
+                cd /d C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.cmake.CmakeTool\\3.30.1\\bin 
+                cmake --build '''
 
 
                }
