@@ -9,7 +9,7 @@ pipeline {
               bat "cd /d ${path1} && cmake --version"
                bat 'gcc --version'
         
-        bat " cd algorithms && cd /d ${path1} && cmake --build"
+        bat " pushd algorithms && cd /d ${path1} && cmake --build"
 
 
                }
