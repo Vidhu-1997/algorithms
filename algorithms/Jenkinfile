@@ -8,8 +8,8 @@ pipeline {
                def path1 = tool name: 'cmake25', type: 'hudson.plugins.cmake.CmakeTool'
               bat "cd /d ${path1} && cmake --version"
                bat 'gcc --version'
-        
-        bat " pushd algorithms && cd /d ${path1} && cmake --build"
+        bat "pushd algorithms"
+        bat "cd /d ${path1} && cmake --build"
 
 
                }
