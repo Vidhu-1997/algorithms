@@ -27,9 +27,8 @@ pipeline {
                                        bat '''
                         C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.sonar.SonarRunnerInstallation\\sonarqubescanner\\bin\\sonar-scanner\
                 -Dsonar.projectKey=sivasai-jenkins_c-application\
-                 -Dsonar.sources=.\\algorithms\
+                 -Dsonar.sources=.\
                  -Dsonar.organization=sivasai-jenkins\
-                 -Dsonar.cfamily.build-wrapper-output=bw-output
                  -Dsonar.token=3cade956570c411a53b32955b9337e4281d5d6fd\
                  
                  '''
