@@ -32,6 +32,8 @@ pipeline {
                  -Dsonar.token=3cade956570c411a53b32955b9337e4281d5d6fd\
                  
                  '''
+                bat 'sonar-scanner -Dsonar.organization=sivasai-jenkins -Dsonar.projectKey=sivasai-jenkins_c-application -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=3cade956570c411a53b32955b9337e4281d5d6fd -Dsonar.cfamily.coverage.reportPaths=build/coverage/gcov.xml'
+
                     }
                 }
             }
