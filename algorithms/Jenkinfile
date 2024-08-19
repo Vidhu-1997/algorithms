@@ -24,15 +24,23 @@ pipeline {
                 script {
                     withSonarQubeEnv('sonarqube') {
                       
-                                       bat '''
-                        C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.sonar.SonarRunnerInstallation\\sonarqubescanner\\bin\\sonar-scanner\
-                -Dsonar.projectKey=sivasai-jenkins_c-application\
-                 -Dsonar.sources=.\
-                 -Dsonar.organization=sivasai-jenkins\
-                 -Dsonar.token=3cade956570c411a53b32955b9337e4281d5d6fd\
+                //                        bat '''
+                //         C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.sonar.SonarRunnerInstallation\\sonarqubescanner\\bin\\sonar-scanner\
+                // -Dsonar.projectKey=sivasai-jenkins_c-application\
+                //  -Dsonar.sources=.\
+                //  -Dsonar.organization=sivasai-jenkins\
+                //  -Dsonar.token=3cade956570c411a53b32955b9337e4281d5d6fd\
                  
-                 '''
-                bat 'sonar-scanner -Dsonar.organization=sivasai-jenkins -Dsonar.projectKey=sivasai-jenkins_c-application -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=3cade956570c411a53b32955b9337e4281d5d6fd -Dsonar.cfamily.coverage.reportPaths=build/coverage/gcov.xml'
+                //  '''
+                bat '''
+     C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.sonar.SonarRunnerInstallation\\sonarqubescanner\\bin\\sonar-scanner `
+  -D"sonar.organization=sivasai-jenkins" `
+  -D"sonar.projectKey=sivasai-jenkins_c-application" `
+  -D"sonar.sources=." `
+  -D"sonar.cfamily.compile-commands=bw-output/compile_commands.json" `
+  -D"sonar.host.url=https://sonarcloud.io"'''
+              //  bat 'sonar-scanner -Dsonar.organization=sivasai-jenkins -Dsonar.projectKey=sivasai-jenkins_c-application -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=3cade956570c411a53b32955b9337e4281d5d6fd -Dsonar.cfamily.coverage.reportPaths=build/coverage/gcov.xml'
+
 
                     }
                 }
