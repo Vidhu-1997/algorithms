@@ -9,7 +9,6 @@ pipeline {
                bat "cd /d ${path1} && cmake --version"
                 bat 'gcc --version'
 
-
                 }
              }
          }   
