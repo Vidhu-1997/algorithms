@@ -2,52 +2,19 @@ pipeline {
 
     agent any 
     stages { 
-        // stage('Build') { 
-        //     steps {
-        //        script{
-        //        def path1 = tool name: 'cmake25', type: 'hudson.plugins.cmake.CmakeTool'
-        //       bat "cd /d ${path1} && cmake --version"
-        //        bat 'gcc --version'
-        // bat ''' cd algorithms  
-        //         cd /d C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.cmake.CmakeTool\\3.30.1\\bin 
-        //         cmake ..
-        //         cmake --build ..'''
+         stage("Build"){
+             steps {
+                script{
+                def path1 = tool name: 'cmake25', type: 'hudson.plugins.cmake.CmakeTool'
+               bat "cd /d ${path1} && cmake --version"
+                bat 'gcc --version'
+             //   bat 'C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.cmake.CmakeTool\\3.30.1\\bin\\cmake.exe ./algorithms'
 
 
-        //        }
-        //     }
-        // }   
-        stage('SCA')
-        {
-              
-            steps {
-                script {
-                    withSonarQubeEnv('sonarqube') {
-                      
-                //                        bat '''
-                //         C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.sonar.SonarRunnerInstallation\\sonarqubescanner\\bin\\sonar-scanner\
-                // -Dsonar.projectKey=sivasai-jenkins_c-application\
-                //  -Dsonar.sources=.\
-                //  -Dsonar.organization=sivasai-jenkins\
-                //  -Dsonar.token=3cade956570c411a53b32955b9337e4281d5d6fd\
-                 
-                //  '''
-                bat '''
-     C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.sonar.SonarRunnerInstallation\\sonarqubescanner\\bin\\sonar-scanner \
-  -Dsonar.organization=sivasai-jenkins \
-  -Dsonar.projectKey=sivasai-jenkins_c-application\
-  -Dsonar.sources=. \
-  -Dsonar.token=3cade956570c411a53b32955b9337e4281d5d6fd\
-  -Dsonar.cfamily.compile-commands=bw-output/compile_commands.json \
-  '''
-              //  bat 'sonar-scanner -Dsonar.organization=sivasai-jenkins -Dsonar.projectKey=sivasai-jenkins_c-application -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=3cade956570c411a53b32955b9337e4281d5d6fd -Dsonar.cfamily.coverage.reportPaths=build/coverage/gcov.xml'
-
-
-                    }
                 }
-            }
-        }
-
+             }
+         }   
+   
         }
     
 }
