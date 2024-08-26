@@ -2,12 +2,7 @@ pipeline {
 
     agent any 
     stages { 
-         stage('Build') { 
-                steps{
-                  cleanWs()
-                }
-            }
-         stage("buils"){
+         stage("Build"){
              steps {
                 script{
                 def path1 = tool name: 'cmake25', type: 'hudson.plugins.cmake.CmakeTool'
