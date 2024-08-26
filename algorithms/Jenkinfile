@@ -2,19 +2,13 @@ pipeline {
 
     agent any 
     stages { 
-       stage('clean WS')
-       {
-         steps{
-             cleanWs()
-          }
-        }
          stage('Build') { 
              steps {
                 script{
                 def path1 = tool name: 'cmake25', type: 'hudson.plugins.cmake.CmakeTool'
                bat "cd /d ${path1} && cmake --version"
                 bat 'gcc --version'
-         bat ''' cd algorithms  
+                bat ''' cd algorithms  
                  C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.cmake.CmakeTool\\3.30.1\\bin\\cmake.exe .
                  '''
 
