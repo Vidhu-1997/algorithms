@@ -9,9 +9,8 @@ pipeline {
                bat "cd /d ${path1} && cmake --version"
                 bat 'gcc --version'
          bat ''' cd algorithms  
-                 cd /d C:\\ProgramData\\Jenkins\\.jenkins\\tools\\hudson.plugins.cmake.CmakeTool\\3.30.1\\bin 
                  cmake ..
-                 cmake --build ..'''
+                 '''
 
 
                 }
